@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Projekt Journal</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --bg-card: #242938;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #7c3aed;
+            --accent-success: #10b981;
+            --accent-danger: #ef4444;
+            --accent-warning: #f59e0b;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(124, 58, 237, 0.05));
+        }
+
+        .login-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-box h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .login-box p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-success {
+            background: var(--accent-success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--accent-danger);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Admin Dashboard */
+        .admin-header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-header h1 {
+            font-size: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .admin-header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar nav a {
+            padding: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: var(--bg-secondary);
+            color: var(--accent-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h2 {
+            font-size: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card .label {
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Posts Table */
+        .posts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .posts-table th,
+        .posts-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .posts-table th {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .posts-table td {
+            color: var(--text-secondary);
+        }
+
+        .posts-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-published {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-success);
+        }
+
+        .badge-draft {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-warning);
+        }
+
+        /* Editor */
+        .editor-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toolbar-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .tag-input-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 50px;
+        }
+
+        .tag-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .preview-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--accent-success);
+            color: var(--accent-success);
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid var(--accent-danger);
+            color: var(--accent-danger);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .posts-table {
+                font-size: 0.85rem;
+            }
+
+            .posts-table th,
+            .posts-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <h1>🔐 Admin Login</h1>
+            <p>Projekt Journal CMS</p>
+            
+            <div id="login-error" class="alert alert-danger hidden"></div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Användarnamn</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Lösenord</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Logga in</button>
+            </form>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                    Standard credentials för demo:<br>
+                    <code style="background: var(--bg-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">
+                        admin / admin123
+                    </code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="hidden">
+        <div class="admin-header">
+            <h1>📚 Projekt Journal - Admin Panel</h1>
+            <div class="user-info">
+                <span id="logged-user" style="color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;"></span>
+                <button onclick="logout()" class="btn btn-secondary btn-sm">Logga ut</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <nav>
+                        <a href="#" onclick="showSection('dashboard')" class="active" data-section="dashboard">
+                            📊 Dashboard
+                        </a>
+                        <a href="#" onclick="showSection('posts')" data-section="posts">
+                            📝 Alla Projekt
+                        </a>
+                        <a href="#" onclick="showSection('new-post')" data-section="new-post">
+                            ➕ Nytt Projekt
+                        </a>
+                        <a href="#" onclick="showSection('settings')" data-section="settings">
+                            ⚙️ Inställningar
+                        </a>
+                        <a href="../index.html" target="_blank">
+                            🌐 Visa Webbplats
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <!-- Dashboard Section -->
+                    <div id="section-dashboard" class="content-section">
+                        <div class="page-header">
+                            <h2>Dashboard</h2>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="number" id="total-posts">0</div>
+                                <div class="label">Totalt Projekt</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number" id="published-posts">0</div>
+                                <div class="label">Publicerade</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number" id="draft-posts">0</div>
+                                <div class="label">Utkast</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number" id="categories-count">0</div>
+                                <div class="label">Kategorier</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Senaste Projekten</h3>
+                        <div id="recent-posts"></div>
+                    </div>
+
+                    <!-- All Posts Section -->
+                    <div id="section-posts" class="content-section hidden">
+                        <div class="page-header">
+                            <h2>Alla Projekt</h2>
+                            <button onclick="showSection('new-post')" class="btn btn-success btn-sm">➕ Nytt Projekt</button>
+                        </div>
+
+                        <div id="posts-list"></div>
+                    </div>
+
+                    <!-- New/Edit Post Section -->
+                    <div id="section-new-post" class="content-section hidden">
+                        <div class="page-header">
+                            <h2 id="editor-title">Nytt Projekt</h2>
+                            <button onclick="showSection('posts')" class="btn btn-secondary btn-sm">Avbryt</button>
+                        </div>
+
+                        <div id="save-alert" class="alert alert-success hidden"></div>
+
+                        <form id="post-form" class="editor-container">
+                            <input type="hidden" id="post-id">
+                            
+                            <div class="form-group">
+                                <label for="post-title">Projekttitel *</label>
+                                <input type="text" id="post-title" required placeholder="T.ex. Automationslösning med WAGO PLC">
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="post-category">Kategori *</label>
+                                    <select id="post-category" required>
+                                        <option value="">Välj kategori</option>
+                                        <option value="automation">🤖 Automation</option>
+                                        <option value="software">💻 Mjukvara</option>
+                                        <option value="rf-engineering">📡 RF Engineering</option>
+                                        <option value="robotics">🦾 Robotik</option>
+                                        <option value="devops">🔧 DevOps</option>
+                                        <option value="infrastructure">☁️ Infrastruktur</option>
+                                        <option value="embedded">🔌 Embedded Systems</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="post-icon">Emoji/Ikon *</label>
+                                    <input type="text" id="post-icon" required placeholder="🤖" maxlength="2">
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="post-date">Publiceringsdatum *</label>
+                                    <input type="date" id="post-date" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="post-author">Författare *</label>
+                                    <input type="text" id="post-author" required placeholder="T.ex. Salman Yahya">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="post-read-time">Lästid</label>
+                                    <input type="text" id="post-read-time" placeholder="10 min">
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="post-company">Företag/Organisation</label>
+                                    <input type="text" id="post-company" placeholder="T.ex. Academic Work AB">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="post-location">Plats (valfritt)</label>
+                                    <input type="text" id="post-location" placeholder="T.ex. Göteborg, Sverige">
+                                </div>
+                            </div>
+
+                            <!-- Metadata Display (Read-only) -->
+                            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted);">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div>
+                                        📅 Skapad: <span id="created-date-display">-</span>
+                                    </div>
+                                    <div>
+                                        ✏️ Senast ändrad: <span id="modified-date-display">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="post-excerpt">Kort beskrivning *</label>
+                                <textarea id="post-excerpt" required placeholder="En kort sammanfattning av projektet (2-3 meningar)..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="post-content">Fullständigt innehåll (HTML)</label>
+                                <textarea id="post-content" rows="15" placeholder="Skriv projektets detaljerade innehåll här (stödjer HTML)..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Taggar/Teknologier</label>
+                                <div class="tag-input-container" id="tags-container">
+                                    <input type="text" id="tag-input" placeholder="Tryck Enter för att lägga till..." 
+                                           style="border: none; background: transparent; outline: none; flex: 1; color: var(--text-primary);">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="post-featured"> 
+                                    <span style="margin-left: 0.5rem;">Utvalt projekt (Featured)</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select id="post-status">
+                                    <option value="published">Publicerad</option>
+                                    <option value="draft">Utkast</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem;">
+                                <button type="submit" class="btn btn-success">💾 Spara Projekt</button>
+                                <button type="button" onclick="previewPost()" class="btn btn-secondary">👁️ Förhandsgranska</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div id="section-settings" class="content-section hidden">
+                        <div class="page-header">
+                            <h2>Inställningar</h2>
+                        </div>
+
+                        <h3>Export/Import</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                            Hantera dina projektdata
+                        </p>
+
+                        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                            <button onclick="exportData()" class="btn btn-secondary">📥 Exportera alla projekt (JSON)</button>
+                            <button onclick="document.getElementById('import-file').click()" class="btn btn-secondary">📤 Importera projekt</button>
+                            <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importData(event)">
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">Farlig zon</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                            Var försiktig med dessa åtgärder
+                        </p>
+                        <button onclick="clearAllData()" class="btn btn-danger">🗑️ Radera alla projekt</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
