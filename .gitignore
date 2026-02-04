@@ -22,3 +22,6 @@ Thumbs.db
 # Build
 dist/
 build/
+
+setup.ps1
+deploy.ps1
