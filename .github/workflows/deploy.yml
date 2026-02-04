@@ -1,0 +1,49 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.CPANEL_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        
+        # Add cPanel server to known hosts
+        ssh-keyscan -H 68.66.248.7 >> ~/.ssh/known_hosts
+        
+        # Test SSH connection
+        ssh -o BatchMode=yes -v salman@68.66.248.7 'echo "SSH connection successful"'
+
+    - name: Deploy to cPanel
+      run: |
+        echo "Starting deployment to cPanel..."
+        
+        # Create backup of current site (optional)
+        ssh salman@68.66.248.7 'cp -r ~/public_html ~/public_html_backup_$(date +"%Y%m%d_%H%M%S") 2>/dev/null || true'
+        
+        # Sync files to cPanel using rsync
+        rsync -avz --delete \
+          -e "ssh -o StrictHostKeyChecking=no" \
+          --exclude='.git/' \
+          --exclude='.github/' \
+          --exclude='.gitignore' \
+          ./ salman@68.66.248.7:~/public_html/
+        
+        # Set proper permissions
+        ssh salman@68.66.248.7 'chmod 755 ~/public_html && find ~/public_html -type f -exec chmod 644 {} \; && find ~/public_html -type d -exec chmod 755 {} \;'
+        
+        echo "✅ Deployment completed successfully!"
+ 
