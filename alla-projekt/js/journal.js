@@ -4,7 +4,7 @@ function getProjects() {
     if (stored) {
         return JSON.parse(stored);
     }
-    
+
     // Default demo projects if no data exists
     const defaultProjects = [
         {
@@ -59,7 +59,7 @@ function getProjects() {
             createdBy: "salman"
         }
     ];
-    
+
     // Save default projects to localStorage
     localStorage.setItem('journal_posts', JSON.stringify(defaultProjects));
     return defaultProjects;
@@ -76,11 +76,11 @@ function filterProjects() {
     const projects = getProjects().filter(p => p.status === 'published'); // Only show published
     const filteredProjects = projects.filter(project => {
         const matchesCategory = currentFilter === 'all' || project.category === currentFilter;
-        const matchesSearch = searchQuery === '' || 
+        const matchesSearch = searchQuery === '' ||
             project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             project.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
             project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-        
+
         return matchesCategory && matchesSearch;
     });
 
@@ -90,7 +90,7 @@ function filterProjects() {
 function renderProjects(projectsToRender) {
     const grid = document.getElementById('articles-grid');
     const noResults = document.getElementById('no-results');
-    
+
     if (projectsToRender.length === 0) {
         grid.style.display = 'none';
         noResults.style.display = 'block';
@@ -99,7 +99,7 @@ function renderProjects(projectsToRender) {
 
     grid.style.display = 'grid';
     noResults.style.display = 'none';
-    
+
     grid.innerHTML = projectsToRender.map(project => `
         <article class="article-card fade-in">
             <div class="article-image">
@@ -117,7 +117,7 @@ function renderProjects(projectsToRender) {
                 <div class="article-tags">
                     ${project.tags.slice(0, 4).map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
-                <a href="articles/project-${project.id}.html" class="read-more">
+                <a href="articles/article-viewer.html?id=${project.id}" class="read-more">
                     Läs mer →
                 </a>
             </div>
@@ -134,7 +134,7 @@ function formatDate(dateString) {
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     const projects = getProjects().filter(p => p.status === 'published');
-    
+
     // Initial render
     renderProjects(projects);
 
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="article-tags" style="margin-bottom: 2rem;">
                         ${featuredProject.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
-                    <a href="articles/project-${featuredProject.id}.html" class="read-more" style="font-size: 1.1rem;">
+                    <a href="articles/article-viewer.html?id=${featuredProject.id}" class="read-more" style="font-size: 1.1rem;">
                         Läs hela projektet →
                     </a>
                 </div>
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('total-projects').textContent = projects.length;
     document.getElementById('total-categories').textContent = Object.keys(categoryCount).length;
-    document.getElementById('total-technologies').textContent = 
+    document.getElementById('total-technologies').textContent =
         [...new Set(projects.flatMap(p => p.tags))].length;
 });
 
