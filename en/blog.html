@@ -3,26 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salman Yahya - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Blog | Salman Yahya</title>
+    <meta name="description" content="Technical articles and insights in automation, programming, and engineering.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
     <header>
-        <h1>Salman Yahya</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="en/index.html">English Version</a>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">&lt;SY /&gt;</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="lang-switch">
+                        <a href="../blogg.html">SV</a>
+                        <a href="blog.html" class="active">EN</a>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section>
-            <h2>Welcome to my portfolio</h2>
-            <p>This site is currently under construction. Content coming soon!</p>
+        <section style="padding-top: 4rem;">
+            <div class="container">
+                <h1 class="section-title fade-in">Blog</h1>
+                <p class="section-subtitle fade-in">Technical Insights & Articles</p>
+                
+                <div class="card fade-in" style="text-align: center; padding: 4rem 2rem; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        Coming Soon
+                    </h2>
+                    <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                        I'm working on creating content that shares my experiences and insights in 
+                        automation, software development, and engineering.
+                    </p>
+                </div>
+
+                <!-- Planned Topics -->
+                <h2 class="section-title fade-in">Planned Topics</h2>
+                <p class="section-subtitle fade-in">What I Will Write About</p>
+                
+                <div class="grid-3">
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">🤖</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">PLC Programming: Best Practices</h3>
+                            <p class="post-card-meta">Automation • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                Tips and tricks for efficient PLC programming in Siemens TIA Portal and Codesys. 
+                                Structure, debugging, and code optimization.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">💻</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">C# for Industrial Automation</h3>
+                            <p class="post-card-meta">Software • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                How to use C# and .NET to build robust embedded systems and 
+                                SCADA integrations in industrial environments.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">🔧</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">CI/CD for Automation Engineers</h3>
+                            <p class="post-card-meta">DevOps • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                Implementation of modern DevOps practices in automation projects. 
+                                Git workflows, automated testing, and deployment strategies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">📡</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">RF Design for 77 GHz Radar</h3>
+                            <p class="post-card-meta">RF Engineering • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                Challenges and solutions in high-frequency design for automotive radar. 
+                                Simulation, optimization, and verification.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">🏭</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">Industry 4.0 & Smart Factories</h3>
+                            <p class="post-card-meta">Automation • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                The factories of the future: IoT integration, data analysis, and AI in industrial 
+                                automation. Opportunities and challenges.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">🎓</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">My Journey: From EE to Automation</h3>
+                            <p class="post-card-meta">Career • Coming Soon</p>
+                            <p class="post-card-excerpt">
+                                Personal reflections on the career path from electrical engineering to automation 
+                                and software development. Lessons learned and advice.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="card fade-in" style="margin-top: 4rem; text-align: center; padding: 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        Stay Updated
+                    </h2>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Want to be notified when new articles are published? Contact me and I can add 
+                        you to my email list.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>Â© 2025 Salman Yahya. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Salman Yahya. All rights reserved.</p>
+        </div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>

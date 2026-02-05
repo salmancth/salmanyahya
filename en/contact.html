@@ -3,26 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salman Yahya - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Contact | Salman Yahya</title>
+    <meta name="description" content="Get in touch for collaborations, projects, or inquiries.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
     <header>
-        <h1>Salman Yahya</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="en/index.html">English Version</a>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">&lt;SY /&gt;</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="lang-switch">
+                        <a href="../kontakt.html">SV</a>
+                        <a href="contact.html" class="active">EN</a>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section>
-            <h2>Welcome to my portfolio</h2>
-            <p>This site is currently under construction. Content coming soon!</p>
+        <section style="padding-top: 4rem;">
+            <div class="container">
+                <h1 class="section-title fade-in">Let's Connect</h1>
+                <p class="section-subtitle fade-in">Get in Touch With Me</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h3>Ready to collaborate?</h3>
+                        <p>
+                            I'm always interested in new opportunities, challenging projects, and meaningful collaborations. 
+                            Whether you're looking for an automation engineer, software developer, or technical consultant, 
+                            let's have a conversation.
+                        </p>
+                        <p>
+                            You can reach me via email, phone, or LinkedIn. I typically respond within 24 hours 
+                            on weekdays.
+                        </p>
+                        
+                        <div class="contact-links">
+                            <a href="mailto:salman.yahya.soc@outlook.com" class="contact-link">
+                                <div class="icon">✉</div>
+                                <div>
+                                    <div class="label">Email</div>
+                                    <div class="value">salman.yahya.soc@outlook.com</div>
+                                </div>
+                            </a>
+                            <a href="tel:+46761883683" class="contact-link">
+                                <div class="icon">☎</div>
+                                <div>
+                                    <div class="label">Phone</div>
+                                    <div class="value">+46 76 188 36 83</div>
+                                </div>
+                            </a>
+                            <a href="https://linkedin.com/in/salman-yahya/" target="_blank" class="contact-link">
+                                <div class="icon">in</div>
+                                <div>
+                                    <div class="label">LinkedIn</div>
+                                    <div class="value">linkedin.com/in/salman-yahya</div>
+                                </div>
+                            </a>
+                            <a href="https://salmancth.github.io/info" target="_blank" class="contact-link">
+                                <div class="icon">🌐</div>
+                                <div>
+                                    <div class="label">Portfolio</div>
+                                    <div class="value">salmancth.github.io/info</div>
+                                </div>
+                            </a>
+                            <div class="contact-link" style="cursor: default;">
+                                <div class="icon">📍</div>
+                                <div>
+                                    <div class="label">Location</div>
+                                    <div class="value">Västra Frölunda, Gothenburg</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form fade-in">
+                        <div id="form-message" class="alert hidden"></div>
+                        
+                        <form id="contact-form-main">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">
+                                <span id="btn-text">Send Message</span>
+                                <span id="btn-loading" class="hidden">⏳ Sending...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <section style="margin-top: 4rem;">
+                    <h2 class="section-title fade-in">How I Can Help</h2>
+                    <p class="section-subtitle fade-in">Services & Areas of Expertise</p>
+                    
+                    <div class="grid-3">
+                        <div class="card fade-in">
+                            <h3>🤖 Automation & Robotics</h3>
+                            <ul style="list-style: none; margin-top: 1rem;">
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → PLC programming (Siemens, WAGO, Codesys)
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → SCADA systems & HMI development
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → Robot programming & simulation
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → System integration & commissioning
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card fade-in">
+                            <h3>💻 Software Development</h3>
+                            <ul style="list-style: none; margin-top: 1rem;">
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → C#/.NET fullstack development
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → Python applications & automation
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → Embedded systems & industrial software
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → API development & system integration
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card fade-in">
+                            <h3>🔧 Technical Consulting</h3>
+                            <ul style="list-style: none; margin-top: 1rem;">
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → System design & architecture
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → IT infrastructure & cloud migration
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → DevOps & CI/CD implementation
+                                </li>
+                                <li style="padding: 0.5rem 0; color: var(--text-secondary);">
+                                    → Technical documentation & training
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Availability -->
+                <div class="card fade-in" style="margin-top: 4rem; text-align: center; padding: 3rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        Availability
+                    </h2>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        Currently open for:
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <span class="skill-tag" style="font-size: 1rem; padding: 0.6rem 1.2rem;">Consulting Projects</span>
+                        <span class="skill-tag" style="font-size: 1rem; padding: 0.6rem 1.2rem;">Project Collaborations</span>
+                        <span class="skill-tag" style="font-size: 1rem; padding: 0.6rem 1.2rem;">Technical Consulting</span>
+                    </div>
+                    <p style="font-size: 1rem; color: var(--text-secondary);">
+                        Let's discuss how I can contribute to your project or organization.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>Â© 2025 Salman Yahya. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Salman Yahya. All rights reserved.</p>
+        </div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contact-form-main').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+            const messageDiv = document.getElementById('form-message');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+            messageDiv.classList.add('hidden');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                language: 'en'
+            };
+            
+            try {
+                const response = await fetch('/api/contact.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                messageDiv.textContent = result.message;
+                messageDiv.className = 'alert ' + (result.success ? 'alert-success' : 'alert-danger');
+                messageDiv.classList.remove('hidden');
+                
+                if (result.success) {
+                    this.reset();
+                }
+            } catch (error) {
+                messageDiv.textContent = 'An error occurred. Please try again or contact me directly at salman.yahya.soc@outlook.com';
+                messageDiv.className = 'alert alert-danger';
+                messageDiv.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>

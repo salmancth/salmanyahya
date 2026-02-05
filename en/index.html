@@ -3,26 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salman Yahya - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Salman Yahya | Automation Engineer & Software Developer</title>
+    <meta name="description" content="Automation Engineer specializing in PLC programming, SCADA systems, robotics, and fullstack development with C# and Python.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
     <header>
-        <h1>Salman Yahya</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="en/index.html">English Version</a>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">&lt;SY /&gt;</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="lang-switch">
+                        <a href="../index.html">SV</a>
+                        <a href="index.html" class="active">EN</a>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
+
     <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Hi, I'm <span class="name-highlight">Salman Yahya</span></h1>
+                        <h2>Automation Engineer | Software Developer</h2>
+                        <p>
+                            Structured and solution-oriented engineer with expertise in PLC programming, 
+                            SCADA systems, robotics, and fullstack development. I build robust automation solutions 
+                            and software systems that bridge hardware and technology.
+                        </p>
+                        <div class="cta-buttons">
+                            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+                            <a href="https://linkedin.com/in/salman-yahya/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-container">
+                            <div class="profile-border"></div>
+                            <img src="../images/profile.jpg" alt="Salman Yahya" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
         <section>
-            <h2>Welcome to my portfolio</h2>
-            <p>This site is currently under construction. Content coming soon!</p>
+            <div class="container">
+                <h2 class="section-title fade-in">About Me</h2>
+                <p class="section-subtitle fade-in">My Background & Passion</p>
+                
+                <div class="grid-2">
+                    <div class="card fade-in">
+                        <h3>🎯 My Profile</h3>
+                        <p>
+                            I'm a passionate automation engineer and software developer with a broad technical background 
+                            spanning from industrial automation to fullstack development. My strength lies in the ability 
+                            to combine hardware and software to create efficient, robust solutions.
+                        </p>
+                        <p>
+                            With experience from projects in PLC programming (Siemens TIA Portal, WAGO, Codesys), 
+                            SCADA integration (AVEVA), and development in C# and Python, I've worked through the entire chain 
+                            — from concept and calculation to finished control system, testing, documentation, and commissioning.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3>💡 What I Offer</h3>
+                        <p>
+                            <strong>Automation & Industrial Systems:</strong> Programming of PLC and SCADA systems, 
+                            robot programming, and system integration.
+                        </p>
+                        <p>
+                            <strong>Software Development:</strong> Fullstack solutions in C#/.NET, Python applications, 
+                            and embedded systems.
+                        </p>
+                        <p>
+                            <strong>Technical Expertise:</strong> Electrical design, RF & sensor systems, DevOps, and 
+                            IT infrastructure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section >
+            <div class="container">
+                <div class="grid-4">
+                    <div class="card fade-in" style="text-align: center;">
+                        <h3 style="font-size: 3rem; margin-bottom: 0.5rem;">5+</h3>
+                        <p style="font-family: 'JetBrains Mono', monospace; color: var(--accent-primary);">
+                            YEARS EXPERIENCE
+                        </p>
+                    </div>
+                    <div class="card fade-in" style="text-align: center;">
+                        <h3 style="font-size: 3rem; margin-bottom: 0.5rem;">10+</h3>
+                        <p style="font-family: 'JetBrains Mono', monospace; color: var(--accent-primary);">
+                            TECHNOLOGIES
+                        </p>
+                    </div>
+                    <div class="card fade-in" style="text-align: center;">
+                        <h3 style="font-size: 3rem; margin-bottom: 0.5rem;">20+</h3>
+                        <p style="font-family: 'JetBrains Mono', monospace; color: var(--accent-primary);">
+                            PROJECTS COMPLETED
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Skills -->
+        <section>
+            <div class="container">
+                <h2 class="section-title fade-in">Core Competencies</h2>
+                <p class="section-subtitle fade-in">My Areas of Expertise</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>Automation & Robotics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PLC Programming</span>
+                            <span class="skill-tag">Siemens TIA Portal</span>
+                            <span class="skill-tag">WAGO</span>
+                            <span class="skill-tag">Codesys</span>
+                            <span class="skill-tag">SCADA (AVEVA)</span>
+                            <span class="skill-tag">Robot Programming</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Software Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C# / .NET</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Blazor</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">API Development</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>DevOps & Infrastructure</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="skills.html" class="btn btn-primary">View All Skills</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Projects -->
+        <section>
+            <div class="container">
+                <h2 class="section-title fade-in">Latest Projects</h2>
+                <p class="section-subtitle fade-in">Selected Projects & Work</p>
+                
+                <div class="grid-4">
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">🤖</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">Automation Solution with WAGO PLC</h3>
+                            <p class="post-card-meta">2025 • Academic Work AB</p>
+                            <p class="post-card-excerpt">
+                                Development of automation solutions with WAGO PLC in Codesys, including SCADA integration 
+                                and embedded C# applications.
+                            </p>
+                            <a href="projects.html" class="post-card-link">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">📡</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">RF System for Automotive Radar</h3>
+                            <p class="post-card-meta">2023 • Gapwaves AB</p>
+                            <p class="post-card-excerpt">
+                                Design and simulation of microstrip-to-gap waveguide for 77 GHz automotive radar system 
+                                with CST Studio Suite.
+                            </p>
+                            <a href="projects.html" class="post-card-link">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <div class="post-card-image">💻</div>
+                        <div class="post-card-content">
+                            <h3 class="post-card-title">Bioinformatics Pipeline</h3>
+                            <p class="post-card-meta">2022 • Chalmers</p>
+                            <p class="post-card-excerpt">
+                                Fullstack development of bioinformatics pipeline with C#, Blazor and JavaScript, 
+                                deployed on AWS.
+                            </p>
+                            <a href="projects.html" class="post-card-link">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="projects.html" class="btn btn-secondary">All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section>
+            <div class="container">
+                <div class="card fade-in" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">
+                        Ready to Collaborate?
+                    </h2>
+                    <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        I'm always interested in new opportunities, challenging projects, and meaningful collaborations. 
+                        Contact me and let's have a conversation!
+                    </p>
+                    <div class="cta-buttons" style="justify-content: center;">
+                        <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                        <a href="experience.html" class="btn btn-secondary">View My Experience</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>Â© 2025 Salman Yahya. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Salman Yahya. All rights reserved. | Built with precision and passion.</p>
+        </div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
